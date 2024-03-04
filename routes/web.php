@@ -18,4 +18,13 @@ Route::get('/', function () {
 });
 
 
-Route::resource('products', App\Http\Controllers\productController::class);
+Route::get('products/displaygrid', 'App\Http\Controllers\productController@displaygrid')->name('products.displaygrid');
+
+
+//Route::resource('products', 'productController');
+
+
+Route::resource('orderdetails', App\Http\Controllers\orderdetailController::class);
+
+
+Route::resource('scorders', App\Http\Controllers\scorderController::class);

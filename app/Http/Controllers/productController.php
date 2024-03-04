@@ -153,4 +153,15 @@ class productController extends AppBaseController
 
         return redirect(route('products.index'));
     }
+    
+    
+    
+    public function displayGrid(Request $request)
+        {
+        $products=\App\Models\Product::all();
+        return view('products.displaygrid')->with('products',$products);
+    }
+    
+    
+    
 }
