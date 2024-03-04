@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Session;
 
 class scorderController extends AppBaseController
 {
@@ -82,6 +83,25 @@ class scorderController extends AppBaseController
     Session::forget('cart');
     Flash::success("Your Order has Been Placed");
     return redirect(route('products.displaygrid'));
+}
+    
+    
+    public function checkout()
+{
+    if (Session::has('cart')) {
+        $cart = Session::get('cart');
+        $lineitems = array();
+        foreach ($cart as $productid => $qty) {
+            $lineitem['product'] = \App\Models\Product::find($productid);
+            $lineitem['qty'] = $qty;
+            $lineitems[] = $lineitem;
+        }
+        return view('scorders.checkout')->with('lineitems', $lineitems);
+    }
+    else {
+        Flash::error("There are no items in your cart");
+        return redirect(route('products.displaygrid'));
+    }
 }
 
     /**
