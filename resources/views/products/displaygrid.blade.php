@@ -1,7 +1,7 @@
+@extends('layouts.app')
+@section('content')
 
 
-
-@include('products.displaygridnav')
 @include('flash::message')
     <div class='d-flex flex-wrap align-content-start bg-light'>
     @foreach($products as $product)
