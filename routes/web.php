@@ -32,3 +32,7 @@ Route::resource('orderdetails', App\Http\Controllers\orderdetailController::clas
 Route::resource('scorders', App\Http\Controllers\scorderController::class);
 
 Route::get('products/emptycart', 'App\Http\Controllers\productController@emptycart')->name('products.emptycart');
+
+Route::get('scorders/checkout', 'App\Http\Controllers\scorderController@checkout')->name('scorders.checkout');
+
+Route::post('scorders/placeorder', 'App\Http\Controllers\scorderController@placeorder')->name('scorders.placeorder');
