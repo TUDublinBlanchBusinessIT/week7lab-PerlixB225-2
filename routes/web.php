@@ -30,3 +30,5 @@ Route::resource('orderdetails', App\Http\Controllers\orderdetailController::clas
 
 
 Route::resource('scorders', App\Http\Controllers\scorderController::class);
+
+Route::get('products/emptycart', 'App\Http\Controllers\productController@emptycart')->name('products.emptycart');
