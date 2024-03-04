@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get('products/displaygrid', 'App\Http\Controllers\productController@displaygrid')->name('products.displaygrid');
 
+Route::get('products/additem/{id}', 'App\Http\Controllers\productController@additem')->name('products.additem');
+
 
 //Route::resource('products', 'productController');
 
