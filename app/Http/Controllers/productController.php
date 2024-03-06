@@ -20,6 +20,11 @@ class productController extends AppBaseController
     {
         $this->productRepository = $productRepo;
     }
+	
+	
+	
+	
+	
     
     
     
@@ -51,6 +56,25 @@ class productController extends AppBaseController
          }
          return Response::json(['success'=>true],200);
      }
+	 
+	 
+	 public function checkout()
+{
+    if (Session::has('cart')) {
+        $cart = Session::get('cart');
+        $lineitems = array();
+        foreach ($cart as $productid => $qty) {
+            $lineitem['product'] = \App\Models\Product::find($productid);
+            $lineitem['qty'] = $qty;
+            $lineitems[] = $lineitem;
+        }
+        return view('scorders.checkout')->with('lineitems', $lineitems);
+    }
+    else {
+        Flash::error("There are no items in your cart");
+        return redirect(route('products.displaygrid'));
+    }
+}
     
     
     
